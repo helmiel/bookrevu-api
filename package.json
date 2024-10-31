@@ -1,0 +1,29 @@
+{
+  "name": "bookrevu-api",
+  "version": "1.0.0",
+  "description": "1. **Clone the Repository**\r ```bash\r git clone https://github.com/helmiel/bookrevu-api.git\r ```\r 2. **Running the Application**\r   ```bash\r   cd bookrevu-api\r   npm i \r   npm run start:dev\r   ```",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:prod": "NODE_ENV=production node ./src/server.js",
+    "start:dev": "nodemon ./src/server.js",
+    "migrate": "node-pg-migrate"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.10",
+    "@hapi/inert": "^7.1.0",
+    "@hapi/jwt": "^3.2.0",
+    "auto-bind": "^5.0.1",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "joi": "^17.13.3",
+    "nanoid": "^5.0.7",
+    "node-pg-migrate": "^7.6.1",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
