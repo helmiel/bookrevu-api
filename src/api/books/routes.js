@@ -38,11 +38,11 @@ const routes = (handler) => [
       },
     },
   },
-  // {
-  //   method: "GET",
-  //   path: "/books",
-  //   handler: () => handler.getBooksHandler(),
-  // },
+  {
+    method: "GET",
+    path: "/books",
+    handler: () => handler.getBooksHandler(),
+  },
   // {
   //   method: "GET",
   //   path: "/books/{id}",
