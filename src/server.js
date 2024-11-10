@@ -22,9 +22,9 @@ import AuthenticationsValidator from "./validator/authentications/index.js";
 import TokenManager from "./tokenize/TokenManager.js";
 
 // // books
-// import books from "./api/books/index.js";
-// import BooksService from "./services/postgres/BooksService.js";
-// import BooksValidator from "./validator/books/index.js";
+import books from "./api/books/index.js";
+import BooksService from "./services/postgres/BooksService.js";
+import BooksValidator from "./validator/books/index.js";
 
 // // reviews
 // import reviews from "./api/reviews/index.js";
@@ -42,10 +42,10 @@ import TokenManager from "./tokenize/TokenManager.js";
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
-  // const booksService = new BooksService();
-  // const storageService = new StorageService(
-  //   path.resolve(__dirname, "api/books/file/images")
-  // );
+  const booksService = new BooksService();
+  const storageService = new StorageService(
+    path.resolve(__dirname, "api/books/file/images")
+  );
   // const reviewsService = new ReviewsService();
   // const ratingsService = new RatingsService();
 
@@ -115,14 +115,14 @@ const init = async () => {
         validator: AuthenticationsValidator,
       },
     },
-    // {
-    //   plugin: books,
-    //   options: {
-    //     booksService: booksService,
-    //     storageService: storageService,
-    //     validator: BooksValidator,
-    //   },
-    // },
+    {
+      plugin: books,
+      options: {
+        booksService: booksService,
+        storageService: storageService,
+        validator: BooksValidator,
+      },
+    },
     // {
     //   plugin: reviews,
     //   options: {
