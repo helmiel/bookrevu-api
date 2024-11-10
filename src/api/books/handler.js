@@ -59,15 +59,15 @@ class BooksHandler {
     return response;
   }
 
-  // async getBooksHandler() {
-  //   const books = await this._booksService.getBooks();
-  //   return {
-  //     status: "success",
-  //     data: {
-  //       books,
-  //     },
-  //   };
-  // }
+  async getBooksHandler() {
+    const books = await this._booksService.getBooks();
+    return {
+      status: "success",
+      data: {
+        books,
+      },
+    };
+  }
 
   // async getBookByIdHandler(request, h) {
   //   const { id } = request.params;
