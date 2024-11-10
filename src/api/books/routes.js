@@ -38,36 +38,36 @@ const routes = (handler) => [
       },
     },
   },
-  {
-    method: "GET",
-    path: "/books",
-    handler: () => handler.getBooksHandler(),
-  },
-  {
-    method: "GET",
-    path: "/books/{id}",
-    handler: (request, h) => handler.getBookByIdHandler(request, h),
-  },
-  {
-    method: "GET",
-    path: "/books/search",
-    handler: (request, h) => handler.getBooksSearchHandler(request, h),
-  },
-  {
-    method: "GET",
-    path: "/books/upcoming",
-    handler: () => handler.getUpcomingBooksHandler(),
-  },
-  {
-    method: "GET",
-    path: "/books/recomendation",
-    handler: () => handler.getRecomendationBooksHandler(),
-  },
-  {
-    method: "GET",
-    path: "/books/home",
-    handler: () => handler.getHomeBooksHandler(),
-  },
+  // {
+  //   method: "GET",
+  //   path: "/books",
+  //   handler: () => handler.getBooksHandler(),
+  // },
+  // {
+  //   method: "GET",
+  //   path: "/books/{id}",
+  //   handler: (request, h) => handler.getBookByIdHandler(request, h),
+  // },
+  // {
+  //   method: "GET",
+  //   path: "/books/search",
+  //   handler: (request, h) => handler.getBooksSearchHandler(request, h),
+  // },
+  // {
+  //   method: "GET",
+  //   path: "/books/upcoming",
+  //   handler: () => handler.getUpcomingBooksHandler(),
+  // },
+  // {
+  //   method: "GET",
+  //   path: "/books/recomendation",
+  //   handler: () => handler.getRecomendationBooksHandler(),
+  // },
+  // {
+  //   method: "GET",
+  //   path: "/books/home",
+  //   handler: () => handler.getHomeBooksHandler(),
+  // },
 ];
 
 export default routes;

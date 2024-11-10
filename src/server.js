@@ -36,8 +36,8 @@ import BooksValidator from "./validator/books/index.js";
 // import RatingsService from "./services/postgres/RatingsService.js";
 // import RatingsValidator from "./validator/ratings/index.js";
 
-// // uploads
-// import StorageService from "./services/storage/StorageService.js";
+// uploads
+import StorageService from "./services/storage/StorageService.js";
 
 const init = async () => {
   const usersService = new UsersService();

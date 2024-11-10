@@ -84,18 +84,18 @@ class BooksService {
   //   return result.rows;
   // }
 
-  // async editBookCoverbyId(id, book_image_url) {
-  //   const query = {
-  //     text: "UPDATE books SET book_image_url = $1 WHERE id = $2 RETURNING id",
-  //     values: [book_image_url, id],
-  //   };
+  async editBookCoverbyId(id, book_image_url) {
+    const query = {
+      text: "UPDATE books SET book_image_url = $1 WHERE id = $2 RETURNING id",
+      values: [book_image_url, id],
+    };
 
-  //   const result = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-  //   if (!result.rows.length) {
-  //     throw new NotFoundError("Book tidak ditemukan");
-  //   }
-  // }
+    if (!result.rows.length) {
+      throw new NotFoundError("Book tidak ditemukan");
+    }
+  }
 
   // async editBookRatingbyId(id, rating, rowCount) {
   //   const query = {
