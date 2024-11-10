@@ -45,15 +45,15 @@ class BooksService {
     return result.rows[0].id;
   }
 
-  // async getBooks() {
-  //   const query = {
-  //     text: "SELECT * FROM books",
-  //   };
+  async getBooks() {
+    const query = {
+      text: "SELECT * FROM books",
+    };
 
-  //   const result = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-  //   return result.rows.map(mapDBToModelBook);
-  // }
+    return result.rows.map(mapDBToModelBook);
+  }
 
   // async getBookById(id) {
   //   const query = {
