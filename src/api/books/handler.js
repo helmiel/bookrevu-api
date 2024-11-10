@@ -82,18 +82,18 @@ class BooksHandler {
   //   return response;
   // }
 
-  // async getBooksSearchHandler(request, h) {
-  //   const { q } = request.query;
-  //   const books = await this._booksService.getBooksSearch(q);
-  //   const response = h.response({
-  //     status: "success",
-  //     data: {
-  //       books,
-  //     },
-  //   });
-  //   response.code(200);
-  //   return response;
-  // }
+  async getBooksSearchHandler(request, h) {
+    const { q } = request.query;
+    const books = await this._booksService.getBooksSearch(q);
+    const response = h.response({
+      status: "success",
+      data: {
+        books,
+      },
+    });
+    response.code(200);
+    return response;
+  }
 
   // async getUpcomingBooksHandler() {
   //   const books = await this._booksService.getUpcomingBooks();

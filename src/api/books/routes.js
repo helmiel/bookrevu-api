@@ -48,11 +48,11 @@ const routes = (handler) => [
   //   path: "/books/{id}",
   //   handler: (request, h) => handler.getBookByIdHandler(request, h),
   // },
-  // {
-  //   method: "GET",
-  //   path: "/books/search",
-  //   handler: (request, h) => handler.getBooksSearchHandler(request, h),
-  // },
+  {
+    method: "GET",
+    path: "/books/search",
+    handler: (request, h) => handler.getBooksSearchHandler(request, h),
+  },
   // {
   //   method: "GET",
   //   path: "/books/upcoming",

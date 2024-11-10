@@ -69,20 +69,20 @@ class BooksService {
   //   return result.rows.map(mapDBToModelBook)[0];
   // }
 
-  // async getBooksSearch(q) {
-  //   const query = {
-  //     text: "SELECT * FROM books WHERE LOWER(title) LIKE LOWER($1)",
-  //     values: [`%${q}%`],
-  //   };
+  async getBooksSearch(q) {
+    const query = {
+      text: "SELECT * FROM books WHERE LOWER(title) LIKE LOWER($1)",
+      values: [`%${q}%`],
+    };
 
-  //   const result = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-  //   if (!result.rows.length) {
-  //     throw new NotFoundError("Book tidak ditemukan");
-  //   }
+    if (!result.rows.length) {
+      throw new NotFoundError("Book tidak ditemukan");
+    }
 
-  //   return result.rows;
-  // }
+    return result.rows;
+  }
 
   async editBookCoverbyId(id, book_image_url) {
     const query = {
