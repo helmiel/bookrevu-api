@@ -10,10 +10,10 @@ import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// // users
-// import users from "./api/users/index.js";
-// import UsersService from "./services/postgres/UsersService.js";
-// import UsersValidator from "./validator/users/index.js";
+// users
+import users from "./api/users/index.js";
+import UsersService from "./services/postgres/UsersService.js";
+import UsersValidator from "./validator/users/index.js";
 
 // authentications
 import authentications from "./api/authentications/index.js";
@@ -40,7 +40,7 @@ import TokenManager from "./tokenize/TokenManager.js";
 // import StorageService from "./services/storage/StorageService.js";
 
 const init = async () => {
-  // const usersService = new UsersService();
+  const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
   // const booksService = new BooksService();
   // const storageService = new StorageService(
@@ -99,13 +99,13 @@ const init = async () => {
   });
 
   await server.register([
-    // {
-    //   plugin: users,
-    //   options: {
-    //     service: usersService,
-    //     validator: UsersValidator,
-    //   },
-    // },
+    {
+      plugin: users,
+      options: {
+        service: usersService,
+        validator: UsersValidator,
+      },
+    },
     {
       plugin: authentications,
       options: {
