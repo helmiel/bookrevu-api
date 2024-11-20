@@ -81,7 +81,9 @@ class UsersService {
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new AuthenticationError("Username yang anda masukkan salah");
+      throw new AuthenticationError(
+        "username atau password yang anda masukkan salah"
+      );
     }
 
     const {
@@ -95,7 +97,9 @@ class UsersService {
     const match = await bcrypt.compare(password, hashedPassword);
 
     if (!match) {
-      throw new AuthenticationError("Password yang anda masukkan salah");
+      throw new AuthenticationError(
+        "username atau password yang anda masukkan salah"
+      );
     }
 
     return { id, email, displayname, role };
