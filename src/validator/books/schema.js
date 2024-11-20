@@ -26,4 +26,8 @@ const BookCoverSchema = Joi.object({
     .required(),
 }).unknown();
 
-export { BookPayloadSchema, BookCoverSchema };
+const searchBookSchema = Joi.object({
+  q:  Joi.string().required(),
+})
+
+export { BookPayloadSchema, BookCoverSchema, searchBookSchema };

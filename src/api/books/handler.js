@@ -84,6 +84,7 @@ class BooksHandler {
 
   async getBooksSearchHandler(request, h) {
     const { q } = request.query;
+    this._validator.validateSearchBookPayload(request.query);
     const books = await this._booksService.getBooksSearch(q);
     const response = h.response({
       status: "success",
