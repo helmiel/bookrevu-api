@@ -25,7 +25,7 @@ const routes = (handler) => [
         allow: "multipart/form-data",
         multipart: true,
         output: "stream",
-        maxBytes: 1024000,
+        maxBytes: 5120000,
       },
     },
   },
@@ -53,21 +53,21 @@ const routes = (handler) => [
     path: "/books/search",
     handler: (request, h) => handler.getBooksSearchHandler(request, h),
   },
-  // {
-  //   method: "GET",
-  //   path: "/books/upcoming",
-  //   handler: () => handler.getUpcomingBooksHandler(),
-  // },
-  // {
-  //   method: "GET",
-  //   path: "/books/recomendation",
-  //   handler: () => handler.getRecomendationBooksHandler(),
-  // },
-  // {
-  //   method: "GET",
-  //   path: "/books/home",
-  //   handler: () => handler.getHomeBooksHandler(),
-  // },
+  {
+    method: "GET",
+    path: "/books/upcoming",
+    handler: () => handler.getUpcomingBooksHandler(),
+  },
+  {
+    method: "GET",
+    path: "/books/recomendation",
+    handler: () => handler.getRecomendationBooksHandler(),
+  },
+  {
+    method: "GET",
+    path: "/books/home",
+    handler: () => handler.getHomeBooksHandler(),
+  },
 ];
 
 export default routes;

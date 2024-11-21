@@ -96,37 +96,37 @@ class BooksHandler {
     return response;
   }
 
-  // async getUpcomingBooksHandler() {
-  //   const books = await this._booksService.getUpcomingBooks();
-  //   return {
-  //     status: "success",
-  //     data: {
-  //       books,
-  //     },
-  //   };
-  // }
+  async getUpcomingBooksHandler() {
+    const books = await this._booksService.getUpcomingBooks();
+    return {
+      status: "success",
+      data: {
+        books,
+      },
+    };
+  }
 
-  // async getRecomendationBooksHandler() {
-  //   const books = await this._booksService.getRecomendationBooks();
-  //   return {
-  //     status: "success",
-  //     data: {
-  //       books,
-  //     },
-  //   };
-  // }
+  async getRecomendationBooksHandler() {
+    const books = await this._booksService.getRecomendationBooks();
+    return {
+      status: "success",
+      data: {
+        books,
+      },
+    };
+  }
 
-  // async getHomeBooksHandler() {
-  //   const bookreview = await this._booksService.getReviewHomeBook();
-  //   const bookrating = await this._booksService.getRatingHomeBook();
-  //   return {
-  //     status: "success",
-  //     data: {
-  //       bookreview,
-  //       bookrating,
-  //     },
-  //   };
-  // }
+  async getHomeBooksHandler() {
+    const bookreview = await this._booksService.getReviewHomeBook();
+    const bookrating = await this._booksService.getRatingHomeBook();
+    return {
+      status: "success",
+      data: {
+        bookreview,
+        bookrating,
+      },
+    };
+  }
 }
 
 export default BooksHandler;

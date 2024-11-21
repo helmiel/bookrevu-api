@@ -26,10 +26,10 @@ import books from "./api/books/index.js";
 import BooksService from "./services/postgres/BooksService.js";
 import BooksValidator from "./validator/books/index.js";
 
-// // reviews
-// import reviews from "./api/reviews/index.js";
-// import ReviewsService from "./services/postgres/ReviewsService.js";
-// import ReviewsValidator from "./validator/reviews/index.js";
+// reviews
+import reviews from "./api/reviews/index.js";
+import ReviewsService from "./services/postgres/ReviewsService.js";
+import ReviewsValidator from "./validator/reviews/index.js";
 
 // // ratings
 // import ratings from "./api/ratings/index.js";
@@ -46,7 +46,7 @@ const init = async () => {
   const storageService = new StorageService(
     path.resolve(__dirname, "api/books/file/images")
   );
-  // const reviewsService = new ReviewsService();
+  const reviewsService = new ReviewsService();
   // const ratingsService = new RatingsService();
 
   const server = Hapi.server({
@@ -71,7 +71,7 @@ const init = async () => {
 
   server.state("refreshToken", {
     ttl: 24 * 60 * 60 * 1000 * 30,
-    isSecure: false,
+    isSecure: true,
     path: "/",
     isHttpOnly: true,
     encoding: "base64json",
@@ -121,13 +121,13 @@ const init = async () => {
         validator: BooksValidator,
       },
     },
-    // {
-    //   plugin: reviews,
-    //   options: {
-    //     service: reviewsService,
-    //     validator: ReviewsValidator,
-    //   },
-    // },
+    {
+      plugin: reviews,
+      options: {
+        service: reviewsService,
+        validator: ReviewsValidator,
+      },
+    },
     // {
     //   plugin: ratings,
     //   options: {
