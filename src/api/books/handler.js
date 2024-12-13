@@ -69,22 +69,22 @@ class BooksHandler {
     };
   }
 
-  // async getBookByIdHandler(request, h) {
-  //   const { id } = request.params;
-  //   const book = await this._booksService.getBookById(id);
-  //   const response = h.response({
-  //     status: "success",
-  //     data: {
-  //       book,
-  //     },
-  //   });
-  //   response.code(200);
-  //   return response;
-  // }
+  async getBookByIdHandler(request, h) {
+    const { id } = request.params;
+    const book = await this._booksService.getBookById(id);
+    const response = h.response({
+      status: "success",
+      data: {
+        book,
+      },
+    });
+    response.code(200);
+    return response;
+  }
 
   async getBooksSearchHandler(request, h) {
     const { q } = request.query;
-    this._validator.validateSearchBookPayload(request.query);
+    // this._validator.validateSearchBookPayload(request.query);
     const books = await this._booksService.getBooksSearch(q);
     const response = h.response({
       status: "success",

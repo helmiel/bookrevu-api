@@ -1,5 +1,9 @@
 import InvariantError from "../../exceptions/InvariantError.js";
-import { BookPayloadSchema, BookCoverSchema, searchBookSchema } from "./schema.js";
+import {
+  BookPayloadSchema,
+  BookCoverSchema,
+  searchBookSchema,
+} from "./schema.js";
 
 const BooksValidator = {
   validateBookPayload: (payload) => {
@@ -16,12 +20,12 @@ const BooksValidator = {
     }
   },
 
-  validateSearchBookPayload: (payload) => {
-    const validationResult = searchBookSchema.valid(payload);
-    if (validationResult.error) {
-      throw new InvariantError(validationResult.error.message);
-    }
-  }
+  // validateSearchBookPayload: (payload) => {
+  //   const validationResult = searchBookSchema.valid(payload);
+  //   if (!validationResult.error) {
+  //     throw new InvariantError(validationResult.error.message);
+  //   }
+  // },
 };
 
 export default BooksValidator;

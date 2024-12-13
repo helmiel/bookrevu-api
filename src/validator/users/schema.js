@@ -6,4 +6,19 @@ const UserPayloadSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-export { UserPayloadSchema };
+const ProfilePictureSchema = Joi.object({
+  "content-type": Joi.string()
+    .valid(
+      "image/apng",
+      "image/avif",
+      "image/gif",
+      "image/jpeg",
+      "image/png",
+      "image/svg+xml",
+      "image/webp",
+      "image/jpg"
+    )
+    .required(),
+}).unknown();
+
+export { UserPayloadSchema, ProfilePictureSchema };

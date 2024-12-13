@@ -55,19 +55,19 @@ class BooksService {
     return result.rows.map(mapDBToModelBook);
   }
 
-  // async getBookById(id) {
-  //   const query = {
-  //     text: "SELECT * FROM books WHERE id = $1",
-  //     values: [id],
-  //   };
+  async getBookById(id) {
+    const query = {
+      text: "SELECT * FROM books WHERE id = $1",
+      values: [id],
+    };
 
-  //   const result = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-  //   if (!result.rows.length) {
-  //     throw new NotFoundError("Book tidak ditemukan");
-  //   }
-  //   return result.rows.map(mapDBToModelBook)[0];
-  // }
+    if (!result.rows.length) {
+      throw new NotFoundError("Book tidak ditemukan");
+    }
+    return result.rows.map(mapDBToModelBook)[0];
+  }
 
   async getBooksSearch(q) {
     const query = {
@@ -97,18 +97,18 @@ class BooksService {
     }
   }
 
-  // async editBookRatingbyId(id, rating, rowCount) {
-  //   const query = {
-  //     text: "UPDATE books SET ratingtotal = $1, ratingcount = $2 WHERE id = $3 RETURNING id",
-  //     values: [rating.rating, rowCount, id],
-  //   };
+  async editBookRatingbyId(id, rating, rowCount) {
+    const query = {
+      text: "UPDATE books SET ratingtotal = $1, ratingcount = $2 WHERE id = $3 RETURNING id",
+      values: [rating.rating, rowCount, id],
+    };
 
-  //   const result = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-  //   if (!result.rows.length) {
-  //     throw new NotFoundError("Book tidak ditemukan");
-  //   }
-  // }
+    if (!result.rows.length) {
+      throw new NotFoundError("Book tidak ditemukan");
+    }
+  }
 
   async getUpcomingBooks() {
     const query = {
@@ -138,18 +138,17 @@ class BooksService {
 
   async getReviewHomeBook() {
     const query = {
-      // text: `
-      // SELECT b.id, b.title, b.author, b.book_image_url
-      // FROM books b
-      // JOIN (
-      //   SELECT book_id, COUNT(*) as review_count
-      //   FROM reviews
-      //   GROUP BY book_id
-      //   ORDER BY review_count DESC
-      //   LIMIT 1
-      // ) r ON b.id = r.book_id;
-      // `,
-      text: `SELECT id, title, author, book_image_url FROM public.books ORDER BY ratingtotal DESC LIMIT 1;`,
+      text: `
+      SELECT b.id, b.title, b.author, b.book_image_url
+      FROM books b
+      JOIN (
+        SELECT book_id, COUNT(*) as review_count
+        FROM reviews
+        GROUP BY book_id
+        ORDER BY review_count DESC
+        LIMIT 1
+      ) r ON b.id = r.book_id;
+      `,
     };
     const result = await this._pool.query(query);
 

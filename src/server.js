@@ -31,10 +31,10 @@ import reviews from "./api/reviews/index.js";
 import ReviewsService from "./services/postgres/ReviewsService.js";
 import ReviewsValidator from "./validator/reviews/index.js";
 
-// // ratings
-// import ratings from "./api/ratings/index.js";
-// import RatingsService from "./services/postgres/RatingsService.js";
-// import RatingsValidator from "./validator/ratings/index.js";
+// ratings
+import ratings from "./api/ratings/index.js";
+import RatingsService from "./services/postgres/RatingsService.js";
+import RatingsValidator from "./validator/ratings/index.js";
 
 // uploads
 import StorageService from "./services/storage/StorageService.js";
@@ -47,7 +47,10 @@ const init = async () => {
     path.resolve(__dirname, "api/books/file/images")
   );
   const reviewsService = new ReviewsService();
-  // const ratingsService = new RatingsService();
+  const ratingsService = new RatingsService();
+  const usersStorageService = new StorageService(
+    path.resolve(__dirname, "api/users/file/profile")
+  );
 
   const server = Hapi.server({
     port: process.env.PORT,
@@ -100,7 +103,8 @@ const init = async () => {
     {
       plugin: users,
       options: {
-        service: usersService,
+        usersService: usersService,
+        storageService: usersStorageService,
         validator: UsersValidator,
       },
     },
@@ -128,14 +132,14 @@ const init = async () => {
         validator: ReviewsValidator,
       },
     },
-    // {
-    //   plugin: ratings,
-    //   options: {
-    //     RatingsService: ratingsService,
-    //     BooksService: booksService,
-    //     validator: RatingsValidator,
-    //   },
-    // },
+    {
+      plugin: ratings,
+      options: {
+        RatingsService: ratingsService,
+        BooksService: booksService,
+        validator: RatingsValidator,
+      },
+    },
   ]);
 
   server.ext("onPreResponse", (request, h) => {

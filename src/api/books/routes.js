@@ -1,7 +1,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import { PassThrough } from "stream";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -43,11 +42,11 @@ const routes = (handler) => [
     path: "/books",
     handler: () => handler.getBooksHandler(),
   },
-  // {
-  //   method: "GET",
-  //   path: "/books/{id}",
-  //   handler: (request, h) => handler.getBookByIdHandler(request, h),
-  // },
+  {
+    method: "GET",
+    path: "/books/{id}",
+    handler: (request, h) => handler.getBookByIdHandler(request, h),
+  },
   {
     method: "GET",
     path: "/books/search",
