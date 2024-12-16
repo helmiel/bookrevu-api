@@ -1,10 +1,9 @@
-import pkg from "pg";
-const { Pool } = pkg;
+import pool from "../../utils/pool.js";
 import InvariantError from "../../exceptions/InvariantError.js";
 
 class AuthenticationsService {
   constructor() {
-    this._pool = new Pool();
+    this._pool = pool;
   }
 
   async addRefreshToken(token) {

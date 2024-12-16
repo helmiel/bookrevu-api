@@ -63,14 +63,7 @@ const init = async () => {
     },
   });
 
-  await server.register([
-    {
-      plugin: Jwt,
-    },
-    {
-      plugin: Inert,
-    },
-  ]);
+  await server.register([{ plugin: Jwt }, { plugin: Inert }]);
 
   server.state("refreshToken", {
     ttl: 24 * 60 * 60 * 1000 * 30,
@@ -103,7 +96,7 @@ const init = async () => {
     {
       plugin: users,
       options: {
-        usersService: usersService,
+        usersService,
         storageService: usersStorageService,
         validator: UsersValidator,
       },
@@ -111,8 +104,8 @@ const init = async () => {
     {
       plugin: authentications,
       options: {
-        authenticationsService: authenticationsService,
-        usersService: usersService,
+        authenticationsService,
+        usersService,
         tokenManager: TokenManager,
         validator: AuthenticationsValidator,
       },
@@ -120,8 +113,8 @@ const init = async () => {
     {
       plugin: books,
       options: {
-        booksService: booksService,
-        storageService: storageService,
+        booksService,
+        storageService,
         validator: BooksValidator,
       },
     },
@@ -160,7 +153,7 @@ const init = async () => {
       }
       const newResponse = h.response({
         status: "error",
-        message: "terjadi kegagalan pada server kami",
+        message: "Terjadi kegagalan pada server kami",
       });
       newResponse.code(500);
       return newResponse;
@@ -168,8 +161,16 @@ const init = async () => {
     return h.continue;
   });
 
-  await server.start();
-  console.log(`Server Running at ${server.info.uri}`);
+  if (process.env.NODE_ENV !== "test") {
+    await server.start();
+    console.log(`Server running at ${server.info.uri}`);
+  }
+
+  return server; // Return the server object for testing
 };
 
-init();
+export default init;
+
+if (process.env.NODE_ENV !== "test") {
+  init();
+}

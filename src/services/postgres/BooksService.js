@@ -1,5 +1,4 @@
-import pkg from "pg";
-const { Pool } = pkg;
+import pool from "../../utils/pool.js";
 import { mapDBToModelBook } from "../../utils/map.js";
 import { nanoid } from "nanoid";
 import NotFoundError from "../../exceptions/NotFoundError.js";
@@ -7,7 +6,7 @@ import InvariantError from "../../exceptions/InvariantError.js";
 
 class BooksService {
   constructor() {
-    this._pool = new Pool();
+    this._pool = pool;
   }
 
   async addBook({

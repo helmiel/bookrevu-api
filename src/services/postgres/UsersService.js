@@ -1,5 +1,4 @@
-import pkg from "pg";
-const { Pool } = pkg;
+import pool from "../../utils/pool.js";
 import { nanoid } from "nanoid";
 import InvariantError from "../../exceptions/InvariantError.js";
 import AuthenticationError from "../../exceptions/AuthenticationError.js";
@@ -8,7 +7,7 @@ import bcrypt from "bcrypt";
 
 class UsersService {
   constructor() {
-    this._pool = new Pool();
+    this._pool = pool;
   }
 
   async addUser({ username, email, password }) {
