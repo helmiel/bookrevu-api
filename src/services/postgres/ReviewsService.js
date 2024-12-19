@@ -36,7 +36,7 @@ class ReviewsService {
   async getReviewsByBookId(book_id) {
     const query = {
       text: `
-      SELECT reviews.id as review_id, reviews.review, users.id as user_id, users.displayname
+      SELECT reviews.id as review_id, reviews.review, users.id as user_id, users.displayname, users.profile_image_url
       FROM reviews
       JOIN users ON reviews.user_id = users.id
       WHERE reviews.book_id = $1

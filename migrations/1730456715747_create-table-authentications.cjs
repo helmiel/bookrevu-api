@@ -1,5 +1,3 @@
-const { token } = require("@hapi/jwt");
-
 /**
  * @type {import('node-pg-migrate').ColumnDefinitions | undefined}
  */
