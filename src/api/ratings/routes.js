@@ -1,7 +1,7 @@
 const routes = (handler) => [
   {
     method: "POST",
-    path: "/books/{bookId}/rating",
+    path: "/api/books/{bookId}/rating",
     handler: (request, h) => handler.postRatingHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -9,7 +9,7 @@ const routes = (handler) => [
   },
   {
     method: "GET",
-    path: "/books/{bookId}/userrating",
+    path: "/api/books/{bookId}/userrating",
     handler: (request, h) => handler.getRatingHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -17,7 +17,7 @@ const routes = (handler) => [
   },
   {
     method: "DELETE",
-    path: "/books/{bookId}/rating",
+    path: "/api/books/{bookId}/rating",
     handler: (request, h) => handler.deleteRatingHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",

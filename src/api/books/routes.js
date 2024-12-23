@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 const routes = (handler) => [
   {
     method: "POST",
-    path: "/books",
+    path: "/api/books",
     handler: (request, h) => handler.postBookHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -16,7 +16,7 @@ const routes = (handler) => [
   },
   {
     method: "POST",
-    path: "/books/{id}/covers",
+    path: "/api/books/{id}/covers",
     handler: (request, h) => handler.postBookCoverByIdHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -30,7 +30,7 @@ const routes = (handler) => [
   },
   {
     method: "GET",
-    path: "/albums/images/{param*}",
+    path: "/api/albums/images/{param*}",
     handler: {
       directory: {
         path: path.join(__dirname, "/file/images"),
@@ -39,32 +39,32 @@ const routes = (handler) => [
   },
   {
     method: "GET",
-    path: "/books",
+    path: "/api/books",
     handler: () => handler.getBooksHandler(),
   },
   {
     method: "GET",
-    path: "/books/{id}",
+    path: "/api/books/{id}",
     handler: (request, h) => handler.getBookByIdHandler(request, h),
   },
   {
     method: "GET",
-    path: "/books/search",
+    path: "/api/books/search",
     handler: (request, h) => handler.getBooksSearchHandler(request, h),
   },
   {
     method: "GET",
-    path: "/books/upcoming",
+    path: "/api/books/upcoming",
     handler: () => handler.getUpcomingBooksHandler(),
   },
   {
     method: "GET",
-    path: "/books/recomendation",
+    path: "/api/books/recomendation",
     handler: () => handler.getRecomendationBooksHandler(),
   },
   {
     method: "GET",
-    path: "/books/home",
+    path: "/api/books/home",
     handler: () => handler.getHomeBooksHandler(),
   },
 ];

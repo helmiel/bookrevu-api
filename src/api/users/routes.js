@@ -8,12 +8,12 @@ const __dirname = dirname(__filename);
 const routes = (handler) => [
   {
     method: "POST",
-    path: "/users",
+    path: "/api/users",
     handler: (request, h) => handler.postUserHandler(request, h),
   },
   {
     method: "PUT",
-    path: "/users/profile",
+    path: "/api/users/profile",
     handler: (request, h) => handler.putDisplaynameHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -21,7 +21,7 @@ const routes = (handler) => [
   },
   {
     method: "GET",
-    path: "/users",
+    path: "/api/users",
     handler: (request, h) => handler.getUserByIdHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -29,7 +29,7 @@ const routes = (handler) => [
   },
   {
     method: "POST",
-    path: "/users/profile",
+    path: "/api/users/profile",
     handler: (request, h) => handler.postProfilePictureHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -43,7 +43,7 @@ const routes = (handler) => [
   },
   {
     method: "GET",
-    path: "/images/profile/{param*}",
+    path: "/api/images/profile/{param*}",
     handler: {
       directory: {
         path: path.join(__dirname, "/file/profile"),
@@ -52,7 +52,7 @@ const routes = (handler) => [
   },
   {
     method: "GET",
-    path: "/users/all",
+    path: "/api/users/all",
     handler: (request, h) => handler.getAllUsersHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -60,7 +60,7 @@ const routes = (handler) => [
   },
   {
     method: "POST",
-    path: "/users/admin",
+    path: "/api/users/admin",
     handler: (request, h) => handler.postAdminHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
@@ -68,7 +68,7 @@ const routes = (handler) => [
   },
   {
     method: "DELETE",
-    path: "/users/profile",
+    path: "/api/users/profile",
     handler: (request, h) => handler.deleteProfilePictureHandler(request, h),
     options: {
       auth: "bookrevu_api_jwt",
