@@ -59,7 +59,7 @@ class UsersHandler {
     const { cover } = request.payload;
     this._validator.validateProfilePictureHeader(cover.hapi.headers);
     const filename = await this._storageService.writeFile(cover, cover.hapi);
-    const url = `http://${process.env.HOST}:${process.env.PORT}/images/profile/${filename}`;
+    const url = `http://${process.env.HOST}:${process.env.PORT}/api/images/profile/${filename}`;
     await this._service.editUserProfilePictureById(user_id, url);
     const response = h.response({
       status: "success",
@@ -98,7 +98,7 @@ class UsersHandler {
       await this._service.deleteUserProfilePictureById(user_id);
     let filenameDelete;
 
-    filenameDelete = profile_image_url.split("/images/profile/").pop();
+    filenameDelete = profile_image_url.split("/api/images/profile/").pop();
     await this._storageService.deleteFile(filenameDelete);
     const response = h.response({
       status: "success",

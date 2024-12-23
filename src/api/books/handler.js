@@ -49,7 +49,7 @@ class BooksHandler {
     this._validator.validateBookCoverHeader(cover.hapi.headers);
 
     const filename = await this._storageService.writeFile(cover, cover.hapi);
-    const url = `http://${process.env.HOST}:${process.env.PORT}/albums/images/${filename}`;
+    const url = `http://${process.env.HOST}:${process.env.PORT}/api/albums/images/${filename}`;
     await this._booksService.editBookCoverbyId(id, url);
     const response = h.response({
       status: "success",
