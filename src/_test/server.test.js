@@ -5,7 +5,7 @@ describe("server", () => {
     const server = await init(); // Call the init function
     const response = await server.inject({
       method: "GET",
-      url: "/unregisteredRoute",
+      url: "/api/unregisteredRoute",
     });
 
     expect(response.statusCode).toEqual(404);

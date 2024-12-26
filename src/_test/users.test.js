@@ -23,7 +23,7 @@ describe("Users", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/users",
+        url: "/api/users",
         payload: requestPayload,
       });
       // Assert
@@ -43,7 +43,7 @@ describe("Users", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/users",
+        url: "/api/users",
         payload: requestPayload,
       });
       // Assert

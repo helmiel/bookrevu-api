@@ -25,7 +25,7 @@ describe("Authentication", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/authentications",
+        url: "/api/authentications",
         payload: requestPayload,
       });
       // Assert
@@ -48,7 +48,7 @@ describe("Authentication", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/authentications",
+        url: "/api/authentications",
         payload: requestPayload,
       });
       // Assert

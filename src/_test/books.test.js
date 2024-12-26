@@ -35,7 +35,7 @@ describe("Books", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/books",
+        url: "/api/books",
         payload: requestPayload,
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -63,7 +63,7 @@ describe("Books", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/books",
+        url: "/api/books",
         payload: requestPayload,
       });
       // Assert
@@ -87,7 +87,7 @@ describe("Books", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/books",
+        url: "/api/books",
         payload: requestPayload,
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -113,7 +113,7 @@ describe("Books", () => {
       // Action
       const response = await server.inject({
         method: "GET",
-        url: "/books/search?q=" + query,
+        url: "/api/books/search?q=" + query,
       });
       // Assert
       const responseJson = JSON.parse(response.payload);
@@ -121,6 +121,24 @@ describe("Books", () => {
       expect(responseJson.status).toEqual("success");
       expect(responseJson.data.books).toHaveLength(1);
       expect(responseJson.data.books[0].title).toEqual("Title");
+    });
+
+    it("should respond with 404 when book not found", async () => {
+      // Arrange
+      const query = "tit";
+
+      const server = await init();
+
+      // Action
+      const response = await server.inject({
+        method: "GET",
+        url: "/api/books/search?q=" + query,
+      });
+      // Assert
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(404);
+      expect(responseJson.status).toEqual("fail");
+      expect(responseJson.message).toBeDefined();
     });
   });
 
@@ -135,7 +153,7 @@ describe("Books", () => {
       // Action
       const response = await server.inject({
         method: "GET",
-        url: "/books",
+        url: "/api/books",
       });
       // Assert
       const responseJson = JSON.parse(response.payload);
@@ -155,7 +173,7 @@ describe("Books", () => {
       // Action
       const response = await server.inject({
         method: "GET",
-        url: "/books/recomendation",
+        url: "/api/books/recomendation",
       });
       // Assert
       const responseJson = JSON.parse(response.payload);

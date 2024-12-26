@@ -30,7 +30,7 @@ describe("Ratings", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/books/book-123/rating",
+        url: "/api/books/book-123/rating",
         payload: requestPayload,
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -50,7 +50,7 @@ describe("Ratings", () => {
       // Action
       const response = await server.inject({
         method: "POST",
-        url: "/books/book-123/rating",
+        url: "/api/books/book-123/rating",
         payload: requestPayload,
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -74,7 +74,7 @@ describe("Ratings", () => {
       // Action
       await server.inject({
         method: "POST",
-        url: "/books/book-123/rating",
+        url: "/api/books/book-123/rating",
         payload: requestPayload,
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -83,7 +83,7 @@ describe("Ratings", () => {
 
       const response = await server.inject({
         method: "POST",
-        url: "/books/book-123/rating",
+        url: "/api/books/book-123/rating",
         payload: requestPayload,
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -105,7 +105,7 @@ describe("Ratings", () => {
       // Action
       const response = await server.inject({
         method: "DELETE",
-        url: "/books/book-123/rating",
+        url: "/api/books/book-123/rating",
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -124,7 +124,7 @@ describe("Ratings", () => {
       // Action
       const response = await server.inject({
         method: "DELETE",
-        url: "/books/book-123/rating",
+        url: "/api/books/book-123/rating",
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
