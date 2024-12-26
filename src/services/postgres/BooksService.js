@@ -51,6 +51,10 @@ class BooksService {
 
     const result = await this._pool.query(query);
 
+    if (!result.rows.length) {
+      throw new NotFoundError("Book tidak ditemukan");
+    }
+
     return result.rows.map(mapDBToModelBook);
   }
 
@@ -131,6 +135,10 @@ class BooksService {
     };
 
     const result = await this._pool.query(query);
+
+    if (!result.rowCount) {
+      throw new NotFoundError("Book tidak ditemukan");
+    }
 
     return result.rows.map(mapDBToModelBook);
   }
