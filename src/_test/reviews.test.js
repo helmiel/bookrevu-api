@@ -129,5 +129,24 @@ describe("Reviews", () => {
       expect(responseJson.status).toEqual("success");
       expect(responseJson.message).toBeDefined();
     });
+
+    it("should respond with 404 when review not found", async () => {
+      // Arrange
+      const server = await init();
+      const accessToken = await ServerTestHelper.getAccessToken();
+      // Action
+      const response = await server.inject({
+        method: "DELETE",
+        url: "/api/books/book-123/review",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      // Assert
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(404);
+      expect(responseJson.status).toEqual("fail");
+      expect(responseJson.message).toBeDefined();
+    });
   });
 });
