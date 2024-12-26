@@ -94,6 +94,27 @@ describe("Ratings", () => {
       expect(response.statusCode).toEqual(201);
       expect(responseJson.status).toEqual("success");
     });
+
+    it("should respond with 400 when request payload not contain needed property", async () => {
+      // Arrange
+      const requestPayload = {};
+      const server = await init();
+      const accessToken = await ServerTestHelper.getAccessToken();
+      // Action
+      const response = await server.inject({
+        method: "POST",
+        url: "/api/books/book-123/rating",
+        payload: requestPayload,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      // Assert
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(400);
+      expect(responseJson.status).toEqual("fail");
+      expect(responseJson.message).toBeDefined();
+    });
   });
 
   describe("DELETE /books/{bookId}/rating FR-010", () => {
