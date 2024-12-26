@@ -161,6 +161,21 @@ describe("Books", () => {
       expect(responseJson.status).toEqual("success");
       expect(responseJson.data.books).toHaveLength(3);
     });
+
+    it("should respond with 404 when book not found", async () => {
+      // Arrange
+      const server = await init();
+      // Action
+      const response = await server.inject({
+        method: "GET",
+        url: "/api/books",
+      });
+      // Assert
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(404);
+      expect(responseJson.status).toEqual("fail");
+      expect(responseJson.message).toBeDefined();
+    });
   });
 
   describe("GET /books/recomendation FR-012", () => {
