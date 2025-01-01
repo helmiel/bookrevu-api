@@ -42,10 +42,6 @@ exports.up = (pgm) => {
       type: "TEXT",
       notNull: true,
     },
-    bookURL: {
-      type: "TEXT",
-      // notNull: true,
-    },
     book_image_url: {
       type: "TEXT",
       // notNull: true,
